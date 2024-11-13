@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung Luas Segitiga</title>
+    <style>
+        * {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .tengah {
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            width: 40%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+            background-color: rgb(236, 228, 78);
+        }
+
+        .cardbody {
+            padding: 6px 18px;
+            background-color: rgb(64, 144, 214);
+        }
+
+        .cardfooter {
+            padding: 8px;
+            background-color: pink;
+            display: flex;
+            justify-content: right;
+        }
+
+        .card>h1 {
+            padding: 0 16px;
+            text-align: center;
+        }
+
+        .label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .input[type="text"] {
+            width: 95%;
+            padding: 7px 10px;
+            box-shadow: 0px 0px 2px 2px;
+        }
+
+        #hasil {
+            width: 96.5%;
+            height: 250%;
+            background-color: gray;
+            margin: 20px 5px;
+            padding: 5px;
+            font-size: 18px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        button {
+            border: none;
+            border-radius: 8px;
+            background-color: rgb(255, 255, 255);
+            color: rgb(10, 11, 11);
+            font-size: 14px; 
+            padding: 5px 15px; 
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #f44336; 
+            color: rgb(6, 6, 6);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tengah">
+        <div class="card">
+            <h1>Hitung Luas Segitiga</h1>
+
+            <div class="cardbody">
+                <label for="alas">Alas Segitiga (cm)</label><br>
+                <input type="number" id="alas"><br><br>
+
+                <label for="tinggi">Tinggi Segitiga (cm)</label><br>
+                <input type="number" id="tinggi"><br><br>
+
+                <button id="hitung">Hitung</button>
+
+                <div id="output"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const alas = document.getElementById('alas');
+        const tinggi = document.getElementById('tinggi');
+        const hitung = document.getElementById('hitung');
+        const output = document.getElementById('output');
+
+        hitung.addEventListener('click', function() {
+            let a = parseFloat(alas.value); 
+            let t = parseFloat(tinggi.value); 
+            if (isNaN(a) || isNaN(t) || a <= 0 || t <= 0) {
+                output.innerHTML = "Masukkan nilai alas dan tinggi yang valid!";
+            } else {
+                let l = 0.5 * a * t; 
+                output.innerHTML = `
+                    <p>Luas Segitiga dengan alas ${a} cm dan tinggi ${t} cm adalah ${l} cm².</p>
+                    <p><strong>Cara Penyelesaian:</strong></p>
+                    <p>1. Gunakan rumus luas segitiga: <code>Luas = 1/2 × alas × tinggi</code></p>
+                    <p>2. Substitusi nilai alas = ${a} cm dan tinggi = ${t} cm ke dalam rumus.</p>
+                    <p>3. Perhitungan: <code>Luas = 1/2 × ${a} × ${t} = ${l} cm²</code></p>
+                    <p>4. Jadi, luas segitiga tersebut adalah ${l} cm².</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
